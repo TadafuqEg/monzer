@@ -14,6 +14,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <style>
         .counter-container {
             text-align: center;
@@ -128,7 +129,10 @@
             </h1>
             <p>محمد المنذر بن عبدالعزيز الزنايدي سياسي تونسي تولى مناصب وزارية دون انقطاع بين 1994 و2011.</p>
             <a href="#contact">
-                <button>تواصـــل معــنا</button>
+                <button type="button" style="margin-bottom:10px;">تواصـــل معــنا</button>
+            </a>
+            <a href="{{asset('/website/assets/sheet.pdf')}}" download title="Download Sheet">
+                <button type="button">نموزج التزكية <i class="bi bi-download"></i></button>
             </a>
 
         </div>

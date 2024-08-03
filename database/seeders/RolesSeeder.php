@@ -40,8 +40,8 @@ class RolesSeeder extends Seeder
         $user = User::create([
             'first_name' => 'Admin',
             'last_name' => 'Admin',
-            'email' => 'eldaimi@gmail.com',
-            'username'=>'eldaimi',
+            'email' => 'monzer@gmail.com',
+            'username'=>'monzer',
             'phone' => null,
             'password' => Hash::make('gmadmin159!48@26#0'),
         ]);

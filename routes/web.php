@@ -19,7 +19,8 @@ use App\Http\Controllers\website\WebsiteHomeController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', [WebsiteHomeController::class, 'home'])->name('website-home');
+Route::get('/', [WebsiteHomeController::class, 'home2'])->name('website-home');
+Route::get('/index', [WebsiteHomeController::class, 'home1'])->name('website-index');
 Route::post('/contact-us', [WebsiteHomeController::class, 'contact_us'])->name('website-contact-us');
 ////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////dashboard//////////////////////////////////////

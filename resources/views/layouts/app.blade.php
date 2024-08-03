@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', 'home')</title>
 
-    <link rel="icon" type="image/x-icon" href="{{ app('logo') }}" style="transform: scale(1.2);">
+    <link rel="icon" type="image/x-icon" href="{{asset('website/assets/imgs/logo.png')}}" style="transform: scale(1.2);">
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"

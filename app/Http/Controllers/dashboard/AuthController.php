@@ -23,7 +23,7 @@ class AuthController extends Controller
 ///////////////////////////////////////////  Login  ///////////////////////////////////////////
     public function login_view()
     {
-        return view('website.auth.login');
+        return view('dashboard.login');
     }
 
     public function login(Request $request)
@@ -60,6 +60,6 @@ class AuthController extends Controller
     }
 
     public function home(){
-        return view('website.home');
+        return view('dashboard.home');
     }
 }

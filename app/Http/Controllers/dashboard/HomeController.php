@@ -16,9 +16,11 @@ use App\Models\FAQ;
 use App\Models\ContactUs;
 use App\Models\Volunteer;
 use App\Models\Accident;
+use App\Models\JoinUs;
 use Illuminate\Validation\Rule;
 use Image;
 use App\Models\Recommendation;
+use App\Exports\JoinUsExport;
 use Str;
 use File;
 use Maatwebsite\Excel\Facades\Excel;
@@ -150,10 +152,10 @@ class HomeController extends ApiController
             //$contact_us=ContactUs::all();
 
         }else{
-            $contact_us=ContactUs::orderBy('id','desc')->paginate(10);
+            $contact_us=ContactUs::orderBy('id','desc')->paginate(12);
         }
         
-        return view('website.contact_us.index',compact('contact_us'));
+        return view('dashboard.contact_us.index',compact('contact_us'));
     }
 
     
@@ -165,9 +167,32 @@ class HomeController extends ApiController
     }
     //////////////////////////////////////////////////////////////////////////
     public function recommendations(){
-        $recommendations=Recommendation::orderBy('id','desc')->paginate(10);
+        $recommendations=Recommendation::orderBy('id','desc')->paginate(12);
     
     
         return view('website.recommendations.index',compact('recommendations'));
+    }
+    //////////////////////////////////////////////////////////////////
+    public function join_us(Request $request){
+        
+        if($request->export=='excel'){
+            $invitation_code = substr(str_shuffle('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_'), 0, 12);
+            return Excel::download(new JoinUsExport, auth()->user()->id . $invitation_code . 'join_us.xlsx');
+            //$contact_us=ContactUs::all();
+
+        }else{
+            $emails=JoinUs::orderBy('id','desc')->paginate(12);
+        }
+    
+        return view('dashboard.join_us.index',compact('emails'));
+    }
+
+    public function change_theme(Request $request){
+        $user=auth()->user();
+        $user->theme=$request->theme;
+        $user->save();
+        return $this->sendResponse(null,'success');
+
+
     }
 }

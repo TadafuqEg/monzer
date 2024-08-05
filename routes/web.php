@@ -21,9 +21,14 @@ use App\Http\Controllers\website\WebsiteHomeController;
 */
 Route::get('/', [WebsiteHomeController::class, 'home2'])->name('website-home');
 Route::get('/index', [WebsiteHomeController::class, 'home1'])->name('website-index');
+Route::get('/index2', [WebsiteHomeController::class, 'home3'])->name('website-index2');
 Route::post('/contact-us', [WebsiteHomeController::class, 'contact_us'])->name('website-contact-us');
+Route::post('/join-us', [WebsiteHomeController::class, 'join_us'])->name('website-join-us');
 ////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////dashboard//////////////////////////////////////
+Route::get('/rrr', function () {
+    dd(env('MAIL_USERNAME'));
+});
 ////////////////////////////////////////////////////////////////////////////////
 Route::get('/admin-dashboard', function () {
     
@@ -101,4 +106,6 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin-dashboard'], functio
     Route::get('/contact_us',[HomeController::class,'contact_us'])->name('contact_us');
     Route::get('/contact_us/show/{id}', [HomeController::class, 'question'])->name('question');
     Route::get('/recommendations',[HomeController::class,'recommendations'])->name('recommendations');
+    Route::post('/change_theme',[HomeController::class,'change_theme'])->name('change_theme');
+    Route::get('/join_us',[HomeController::class,'join_us'])->name('join_us');
 });

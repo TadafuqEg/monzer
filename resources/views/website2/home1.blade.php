@@ -7,6 +7,7 @@
     <link rel="icon" type="image/x-icon" href="{{asset('monzer_website/assets/imgs/logo.png')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{asset('monzer_website/css/style.css')}}" />
+    <link rel="stylesheet" href="{{asset('main2.css')}}" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
@@ -14,6 +15,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <style>
         .popup {
             position: fixed;
@@ -82,10 +84,12 @@
         <!--  -->
        <div class="home-content">
         <div class="join">
-            
-            <h5>انضــم الينــا</h5>
-            <input type="text" placeholder="ادخل البريد الالكتروني" />
-            <a><button>سجــل الآن</button></a>
+            <form id="contact-form2">
+                <h5>انضــم الينــا</h5>
+                <input type="text" placeholder="ادخل البريد الالكتروني" id="email" />
+                <span id="email-error" class="error-message"></span>
+                <a><button>سجــل الآن</button></a>
+            </form>
         </div>
        </div>
     </section>
@@ -170,17 +174,60 @@
                         <input id="name" placeholder="الاسم" type="text" style="margin-bottom: 0px;"/>
                         <span id="name-error" class="error-message"></span>
                     </div>
+                    
                     <div class="form-inputs" style="display: block;margin-bottom: 20px;">
-                        <input id="place" placeholder="المنطقة" type="text" style="margin-bottom: 0px;"/>
-                        <span id="place-error" class="error-message"></span>
-                    </div>
-                    <div class="form-inputs" style="display: block;margin-bottom: 20px;">
-                        <input id="state" placeholder="الولاية" type="text" style="margin-bottom: 0px;"/>
+                       
+                        <span class="form-arrow"><i class="bx bx-chevron-down"></i></span>
+                        <select name="country" id="country" class="dropdown" >
+                            <option value="">اختر الولاية</option>
+                            <option value="أريانة">أريانة</option>
+                            <option value="باجة">باجة</option>
+                            <option value="بن عروس">بن عروس</option>
+                            <option value="بنزرت">بنزرت</option>
+                            <option value="تطاوين">تطاوين</option>
+                            <option value="توزر">توزر</option>
+                            <option value="تونس">تونس</option>
+                            <option value="جندوبة">جندوبة</option>
+                            <option value="زغوان">زغوان</option>
+                            <option value="سليانة">سليانة</option>
+                            <option value="سوسة">سوسة</option>
+                            <option value="سيدي بوزيد">سيدي بوزيد</option>
+                            <option value="صفاقس">صفاقس</option>
+                            <option value="قابس">قابس</option>
+                            <option value="قبلي">قبلي</option>
+                            <option value="القصرين">القصرين</option>
+                            <option value="القيروان">القيروان</option>
+                            <option value="الكاف">الكاف</option>
+                            <option value="مدنين">مدنين</option>
+                            <option value="المنستير">المنستير</option>
+                            <option value="منوبة">منوبة</option>
+                            <option value="المهدية">المهدية</option>
+                            <option value="نابل">نابل</option>
+                            <option value="قفصة">قفصة</option>
+                        </select>
                         <span id="state-error" class="error-message"></span>
                     </div>
                     <div class="form-inputs" style="display: block;margin-bottom: 20px;">
-                        <input id="area" placeholder="المعتمدية" type="text" style="margin-bottom: 0px;"/>
+                        <span class="form-arrow"><i class="bx bx-chevron-down"></i></span>
+                        <select name="area" id="area" class="dropdown2" style="
+                                                                            margin-bottom: 0px;
+                                                                            width: 100%;
+                                                                            height: 46px;
+                                                                            border: none;
+                                                                            border-bottom: 1px solid #737B7D;
+                                                                            padding-right: 16px;
+                                                                            font-size: 16px;
+                                                                            color: #929292;
+                                                                            font-weight: 400;">
+                                <option value="">اختر المعتمدية</option>
+
+                           
+                        </select>
                         <span id="area-error" class="error-message"></span>
+                    </div>
+                    <div class="form-inputs" style="display: block;margin-bottom: 20px;">
+                        <input id="place" placeholder="المنطقة" type="text" style="margin-bottom: 0px;"/>
+                        <span id="place-error" class="error-message"></span>
                     </div>
                     <div class="form-inputs" style="display: block;margin-bottom: 20px;">
                         <input id="phone" placeholder="رقـم الهاتف" type="number" style="margin-bottom: 0px;"/>
@@ -259,11 +306,13 @@
             <h4>انضــم الينــا</h4>
             <div class="join-submit">
                 <input type="text" placeholder="ادخل البريد الالكتروني" />
+                
                 <button class="register">سجــل الآن</button>
             </div>
         </div>
     </section>
     <script src="{{asset('monzer_website/js/index.js')}}"></script>
+    <script src="{{asset('main2.js')}}"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="{{asset('monzer_website/js/stylish-portfolio.min.js')}}"></script>
     <script>
@@ -302,6 +351,61 @@
     </script>
     <script>
         $(document).ready(function() {
+
+            var delegations = {
+                "أريانة": [
+                    { value: "أريانة المدينة", text: "أريانة المدينة" },
+                    { value: "سكرة", text: "سكرة" },
+                    { value: "قلعة الأندلس", text: "قلعة الأندلس" },
+                    { value: "رواد", text: "رواد" },
+                    { value: "المنيهلة", text: "المنيهلة" },
+                    { value: "حي التضامن", text: "حي التضامن" },
+                    { value: "سيدى ثابت", text: "سيدى ثابت" },
+                ],
+                "باجة": [
+                    { value: "باجة الجنوبية", text: "باجة الجنوبية" },
+                    { value: "باجة الشمالية", text: "باجة الشمالية" },
+                    { value: "تيبار", text: "تيبار" },
+                    { value: "تستور", text: "تستور" },
+                    { value: "تبرسق" , text: "تبرسق" },
+                    { value: "قبلاط", text: "قبلاط" },
+                    { value: "مجاز الباب", text: "مجاز الباب" },
+                    { value: "نفزة", text: "نفزة" },
+                    { value: "عمدون", text: "عمدون" },
+                ],
+                // Add more mappings for other governorates
+                "بن عروس": [
+                    { value: "بن عروس", text: "بن عروس" },
+                    { value: "المدينة الجديدة", text: "المدينة الجديدة" },
+                    { value: "المروج", text: "المروج" },
+                    { value: "حمام الأنف", text: "حمام الأنف" },
+                    { value: "حمام الشط", text: "حمام الشط" },
+                    { value: "بومهل البساتين", text: "بومهل البساتين" },
+                    { value: "الزهراء", text: "الزهراء" },
+                    { value: "رادس", text: "رادس" },
+                    { value: "مقرين", text: "مقرين" },
+                    { value: "المحمدية", text: "المحمدية" },
+                    { value: "فوشانة", text: "فوشانة" },
+                    { value: "مرناق", text: "مرناق" }
+                ]
+                
+            };
+
+            // Populate the delegations dropdown based on selected governorate
+            $('#state').on('change', function() {
+                var governorate = $(this).val();
+                var options = '<option value="">اختر المعتمدية</option>';
+
+                if (governorate && delegations[governorate]) {
+                    delegations[governorate].forEach(function(delegation) {
+                        options += '<option value="' + delegation.value + '">' + delegation.text + '</option>';
+                    });
+                }
+
+                $('#area').html(options).trigger('change');
+            });
+
+
            $('#contact-form-container').on('submit', function(event) {
               event.preventDefault(); // Prevent default form submission
      
@@ -318,7 +422,7 @@
                  area: $('#area').val(),
                  phone: $('#phone').val(),
                  city: $('#place').val(),
-                 models_num:$('#models-number').val()
+                
               };
      
               // Submit form data via AJAX
@@ -400,17 +504,62 @@
                     $('#place').css('border-color', '');
                 }
 
-                if ($('#models-number').val().trim() === '' || $('#models-number').val().trim() == 0) {
-                    isValid = false;
-                    $('#models-number-error').text('عدد التزكيات مطلوب.');
-                    $('#models-number').css('border-color', 'red');
-                } else {
-                    $('#models-number').css('border-color', '');
-                }
+               
 
                 return isValid;
             }
-        
+            function isValidEmail(email) {
+                // Simple email validation regex
+                var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailPattern.test(email);
+            }
+            $('#contact-form2').on('submit', function(event) {
+                event.preventDefault(); 
+                $('.error-message').text('');
+                
+                var email = $('#email').val().trim();
+                if (email === '' || !isValidEmail(email)) {
+                    
+                    $('#email-error').text('يرجى إدخال بريد إلكتروني صالح.');
+                    $('#email').css('border-color', 'red');
+                    return;
+                } else {
+                    $('#email').css('border-color', '');
+                }
+                    // Prevent default form submission
+            
+                
+              // Get form data
+              var csrfToken = $('meta[name="csrf-token"]').attr('content');
+              var formData = {
+                 _token: csrfToken,
+                 email: $('#email').val()
+                
+              };
+     
+              // Submit form data via AJAX
+              $.ajax({
+                 url: '/join-us', // Replace with your actual controller route
+                 type: 'POST',
+                 data: formData,
+                 success: function(response) {
+                   
+                    let myPopup = $('#myPopup');
+                    myPopup.addClass("show");
+                    $('#contact-form2')[0].reset();
+                    
+                    setTimeout(function() {
+                           
+                                myPopup.removeClass("show"); // Remove the popup after 3 seconds
+                            
+                        }, 3500); 
+                 },
+                 error: function(xhr, status, error) {
+                    // Handle the error response here
+                    console.error(error);
+                 }
+              });
+           });
             
         });
         

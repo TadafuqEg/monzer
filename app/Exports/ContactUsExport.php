@@ -14,16 +14,17 @@ class ContactUsExport implements FromCollection,WithHeadings
     public function headings(): array
     {
         return [
-            'First Name',
-            'Last Name',
-            'Email',
+            'Name',
+            
             'Phone Number',
-            'Message'
+            'Governorate',
+            'Delegation',
+            'City'
             // Add more column headings here as needed
         ];
     }
     public function collection()
     {
-        return ContactUs::select('first_name','last_name', 'email','phone', 'message')->get();
+        return ContactUs::select('name','phone','state','area','city')->get();
     }
 }

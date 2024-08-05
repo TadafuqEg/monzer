@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>منـــذر الزنايــــدي</title>
-    <link rel="icon" type="image/x-icon" href="{{asset('website/assets/imgs/logo.png')}}" style="transform: scale(1.2);">
+    <link rel="icon" type="image/x-icon" href="{{asset('monzer_website/assets/imgs/logo.png')}}" style="transform: scale(1.2);">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{asset('website/css/style.css')}}" />
     <meta name="csrf-token" content="{{ csrf_token() }}">

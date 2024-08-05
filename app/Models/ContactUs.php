@@ -16,7 +16,7 @@ class ContactUs extends Model
         'city',
         'area',
         'phone',
-        'models_num'
+        
     ];
 
     protected $allowedSorts = [

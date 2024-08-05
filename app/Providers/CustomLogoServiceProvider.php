@@ -8,10 +8,11 @@ class CustomLogoServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->bind('logo', function () {
+        $this->app->bind('theme', function () {
             // Logic to determine the path to the logo image
-            $logo=url(Setting::where('key','logo')->where('category','website')->where('type','file')->first()->value);
-            return $logo;
+            //$logo=url(Setting::where('key','logo')->where('category','website')->where('type','file')->first()->value);
+            $theme=auth()->user()->theme;
+            return $theme;
         });
     }
 

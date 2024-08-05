@@ -91,7 +91,10 @@
                       @endif
                     </tbody>
                   </table>
-                  {!! $all_users->links("pagination::bootstrap-4") !!}
+                 
+                    {!! $all_users->links("pagination::bootstrap-4") !!}
+                 
+                  
                 </div>
               </div>
   

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('area');
             $table->string('phone');
-            $table->integer('models_num');
+            
             $table->timestamps();
             $table->softDeletes();
         });

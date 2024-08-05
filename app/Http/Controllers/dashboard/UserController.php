@@ -23,17 +23,17 @@ class UserController extends Controller
 
         if ($request->has('search')) {
 
-            $all_users = user::where('first_name', 'LIKE', '%' . $request->search . '%')->where('username', 'LIKE', '%' . $request->search . '%')->orWhere('last_name', 'LIKE', '%' . $request->search . '%')->orWhere('email', 'LIKE', '%' . $request->search . '%')->orWhere('phone', 'LIKE', '%' . $request->search . '%')->paginate(10);
+            $all_users = user::where('first_name', 'LIKE', '%' . $request->search . '%')->where('username', 'LIKE', '%' . $request->search . '%')->orWhere('last_name', 'LIKE', '%' . $request->search . '%')->orWhere('email', 'LIKE', '%' . $request->search . '%')->orWhere('phone', 'LIKE', '%' . $request->search . '%')->paginate(12);
         } else {
 
-            $all_users= user::orderBy('id','desc')->paginate(10);
+            $all_users= user::orderBy('id','desc')->paginate(12);
         } 
-        return view('website.users.index',compact('all_users'));
+        return view('dashboard.users.index',compact('all_users'));
 
     }
 
     public function create(){
-        return view('website.users.user.create');
+        return view('dashboard.users.create');
     }
 
     public function store(Request $request){
@@ -74,7 +74,7 @@ class UserController extends Controller
 
     public function edit($id){
         $user=User::where('id',$id)->first();
-        return view('website.users.user.edit',compact('user'));
+        return view('dashboard.users.edit',compact('user'));
     }
 
     public function update(Request $request,$id){

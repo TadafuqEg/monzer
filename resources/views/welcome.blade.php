@@ -131,3 +131,18 @@
         </div>
     </body>
 </html>
+ <!--<input id="state" placeholder="الولاية" type="text" style="margin-bottom: 0px;"/>
+                        <div class="customInputContainer" style="border-bottom: 1px solid #737B7D;">
+                            <div class="customInput" style="height: 46px;">
+                                <div class="selectedData" style="color: #929292;font-weight: 400;font-size: 16px;padding-right:16px;">الولاية</div>
+                                <i class="fa-solid fa-angle-right"></i>
+                            </div>
+                            <div class="options">
+                                <div class="searchInput">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <input type="text" id="searchInput" placeholder="Search">
+                                </div>
+                                <ul>
+                                </ul>
+                            </div>
+                        </div> -->

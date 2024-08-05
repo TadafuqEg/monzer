@@ -30,9 +30,9 @@ class AuthController extends ApiController
         $validator  =   Validator::make($request->all(), [
             'first_name' => ['nullable', 'string', 'max:191'],
             'last_name' => ['nullable', 'string', 'max:191'],
-            'phone' => ['nullable'],
+            'phone' => ['nullable','unique:users,phone'],
             'password' => ['required', 'string','confirmed'],
-            'username' =>['required'],
+            'email' =>['required','email', 'unique:users,email'],
             
             
         ]);
@@ -41,15 +41,14 @@ class AuthController extends ApiController
 
             return $this->sendError(null,$validator->errors());
         }
-        $existed_user=User::where('username',$request->username)->first();
-        if($existed_user){
-            
-            
-            do {
-                $username=$request->username . substr(str_shuffle('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_'),0,3);
-            } while (User::where('username', $username)->exists());
-            return $this->sendError($username,'اسم المستخدم موجود بالفعل');
-        }
+        
+        $username='';
+        
+        do {
+            $username=$request->first_name . $request->last_name . substr(str_shuffle('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_'),0,3);
+        } while (User::where('username', $username)->exists());
+            //return $this->sendError($username,'اسم المستخدم موجود بالفعل');
+        
         
         
         
@@ -57,9 +56,9 @@ class AuthController extends ApiController
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'device_token' => $request->fcm_token,
-            'uid' => $request->uid,
+            'email'=>$request->email,
             'phone'=>$request->phone,
-            'username'=> $request->username,
+            'username'=> $username,
             'password'=>  Hash::make($request->password),
             
         ]);
@@ -74,10 +73,10 @@ class AuthController extends ApiController
     }
 
     public function login(Request $request){
+       
         $validator = Validator::make($request->all(), [
-            'username' => 'required',
-            
-            'password'=>'required'
+            'password' => ['required'],
+            'email' =>['required'],
            
         ]);
       
@@ -86,11 +85,14 @@ class AuthController extends ApiController
         }
         $success_login = false;
         
-        $user = User::where('username', $request->username)
-            ->whereHas('roles', function ($q) {
-                $q->where('name', 'Client');
-            })
-            ->first();
+        $user = User::where(function($query) use ($request) {
+                    $query->where('phone', $request->email)
+                        ->orWhere('email', $request->email);
+                })
+                ->whereHas('roles', function ($q) {
+                    $q->where('name', 'Client');
+                })
+                ->first();
 
         if ($user && Hash::check($request->password, $user->password)) {
             $success_login = true;

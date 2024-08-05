@@ -196,10 +196,6 @@
                         <span id="name-error" class="error-message"></span>
                     </div>
                     <div class="form-inputs" style="display: block;margin-bottom: 20px;">
-                        <input id="place" placeholder="المنطقة" type="text" style="margin-bottom: 0px;"/>
-                        <span id="place-error" class="error-message"></span>
-                    </div>
-                    <div class="form-inputs" style="display: block;margin-bottom: 20px;">
                         <input id="state" placeholder="الولاية" type="text" style="margin-bottom: 0px;"/>
                         <span id="state-error" class="error-message"></span>
                     </div>
@@ -207,6 +203,11 @@
                         <input id="area" placeholder="المعتمدية" type="text" style="margin-bottom: 0px;"/>
                         <span id="area-error" class="error-message"></span>
                     </div>
+                    <div class="form-inputs" style="display: block;margin-bottom: 20px;">
+                        <input id="place" placeholder="المنطقة" type="text" style="margin-bottom: 0px;"/>
+                        <span id="place-error" class="error-message"></span>
+                    </div>
+                    
                     <div class="form-inputs" style="display: block;margin-bottom: 20px;">
                         <input id="phone" placeholder="رقـم الهاتف" type="number" style="margin-bottom: 0px;"/>
                         <span id="phone-error" class="error-message"></span>
@@ -420,7 +421,13 @@
                     $('#phone-error').text('رقم الهاتف مطلوب.');
                     $('#phone').css('border-color', 'red');
                 } else {
-                    $('#phone').css('border-color', '');
+                    if ($('#phone').val().trim().length !== 8 || !/^\d{8}$/.test($('#phone').val().trim())) {
+                        isValid = false;
+                        $('#phone-error').text('يجب أن يكون رقم الهاتف مكون من ٨ أرقام.');
+                        $('#phone').css('border-color', 'red');
+                    } else {
+                        $('#phone').css('border-color', '');
+                    }
                 }
 
                 // Check if message is empty

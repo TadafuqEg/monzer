@@ -64,7 +64,7 @@ class WebsiteHomeController extends ApiController
         return $this->sendResponse(null,'شكرا لإنضمامكم معنا');
     }
     public function contact_us(Request $request){
-        ContactUs::create(['name'=>$request->name,'state'=>$request->state,'city'=>$request->city,'area'=>$request->area,'phone'=>$request->phone]);
+        ContactUs::create(['name'=>$request->name,'state'=>$request->state,'city'=>$request->city,'area'=>$request->area,'phone'=>'+216'.$request->phone]);
         return $this->sendResponse(null,'تم تسجيل النموزج بنجاح');
     }
 }
